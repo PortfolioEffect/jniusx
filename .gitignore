@@ -1,0 +1,12 @@
+*.pyo
+*.pyc
+jniusx/jniusx.c
+jniusx/config.pxi
+jniusx/jniusx.so
+build
+.*.swp
+*.class
+.idea
+*~
+*.so
+*.iml
