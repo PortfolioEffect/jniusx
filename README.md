@@ -5,13 +5,13 @@ A Python module to access Java classes as Python classes using JNI.
 
 PyJNIus is a "Work In Progress".
 
-[![Build Status](https://travis-ci.org/kivy/pyjniusx.svg?branch=master)](https://travis-ci.org/kivy/pyjniusx)
+[![Build Status](https://travis-ci.org/kivy/pyjnius.svg?branch=master)](https://travis-ci.org/kivy/pyjnius)
 
 Quick overview
 --------------
 
 ```python
->>> from jniusx import autoclass
+>>> from jnius import autoclass
 >>> autoclass('java.lang.System').out.println('Hello world')
 Hello world
 
@@ -33,7 +33,7 @@ Please ensure that your `JDK_HOME` or `JAVA_HOME` environment variable points
 to the installed JDK root directory, and that the JVM library (`jvm.so` or
 `jvm.dll`) is available from your `PATH` environment variable. **Failure to do
 so may result in a failed install, or a successful install but inability to
-use the pyjniusx library.**
+use the pyjnius library.**
 
     make
 
@@ -47,12 +47,12 @@ Usage with python-for-android
 -----------------------------
 
 * Get http://github.com/kivy/python-for-android
-* Compile a distribution with kivy (pyjniusx will be automatically added)
+* Compile a distribution with kivy (pyjnius will be automatically added)
 * Then, you can do this kind of thing:
 
 ```python
 from time import sleep
-from jniusx import autoclass
+from jnius import autoclass
 
 Hardware = autoclass('org.renpy.android.Hardware')
 print 'DPI is', Hardware.getDPI()

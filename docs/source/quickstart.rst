@@ -3,16 +3,16 @@
 Quickstart
 ==========
 
-Eager to get started? This page will give you a good introduction to Jniusx. It assumes
-you have already Jniusx installed. If you do not, head over the
+Eager to get started? This page will give you a good introduction to Pyjnius. It assumes
+you have already Pyjnius installed. If you do not, head over the
 :ref:`installation` section.
 
 A minimal example
 -----------------
 
-A minimal Jniusx example looks something like this::
+A minimal Pyjnius example looks something like this::
 
-    from jniusx import autoclass
+    from jnius import autoclass
 
     Stack = autoclass('java.util.Stack')
     stack = Stack()
@@ -23,8 +23,8 @@ A minimal Jniusx example looks something like this::
     print stack.pop() # --> 'hello'
 
 Just save it as `test.py` (or something similar) and run it with your Python
-interpreter. Make sure not to call your application `jniusx.py` because it would
-conflict with Jniusx itself::
+interpreter. Make sure not to call your application `jnius.py` because it would
+conflict with Pyjnius itself::
 
     $ python test.py
     world
@@ -33,7 +33,7 @@ conflict with Jniusx itself::
 Automatic recursive inspection
 ------------------------------
 
-Jniusx uses Java reflection to give you a new autoclass() if the return type is
+Pyjnius uses Java reflection to give you a new autoclass() if the return type is
 not a native type. Let's see this example::
 
     System = autoclass('java.lang.System')
@@ -44,11 +44,11 @@ fields and methods naturally. Let's go deeper::
 
     >>> System = autoclass('java.lang.System')
     >>> System
-    <class 'jniusx.java.lang.System'>
+    <class 'jnius.java.lang.System'>
     >>> System.out
     <java.io.PrintStream at 0x234df50 jclass=java/io/PrintStream jself=37921360>
     >>> System.out.println
-    <jniusx.JavaMethodMultiple object at 0x236adb8>
+    <jnius.JavaMethodMultiple object at 0x236adb8>
 
 The recursive reflection always gives you an appropriate object that reflects the
 returned Java object.

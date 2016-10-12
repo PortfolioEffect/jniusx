@@ -6,7 +6,7 @@
 
     <target name="compile">
         <mkdir dir="build/classes"/>
-        <javac srcdir="jniusx/src" destdir="build/classes"
+        <javac srcdir="jnius/src" destdir="build/classes"
                includeantruntime='false' source='1.6' target='1.6' />
     </target>
 
@@ -17,7 +17,7 @@
     </target>
 
     <target name="jar" depends="compile">
-        <jar destfile="build/pyjniusx.jar" basedir="build/classes">
+        <jar destfile="build/pyjnius.jar" basedir="build/classes">
         </jar>
     </target>
 

@@ -22,15 +22,15 @@ def getenv(key):
 
 files = [
     'jni.pxi',
-    'jniusx_conversion.pxi',
-    'jniusx_export_class.pxi',
-    'jniusx_export_func.pxi',
-    'jniusx_jvm_android.pxi',
-    'jniusx_jvm_desktop.pxi',
-    'jniusx_jvm_dlopen.pxi',
-    'jniusx_localref.pxi',
-    'jniusx.pyx',
-    'jniusx_utils.pxi',
+    'jnius_conversion.pxi',
+    'jnius_export_class.pxi',
+    'jnius_export_func.pxi',
+    'jnius_jvm_android.pxi',
+    'jnius_jvm_desktop.pxi',
+    'jnius_jvm_dlopen.pxi',
+    'jnius_localref.pxi',
+    'jnius.pyx',
+    'jnius_utils.pxi',
 ]
 
 libraries = []
@@ -56,7 +56,7 @@ except ImportError:
     except ImportError:
         from distutils.command.build_ext import build_ext
     if platform != 'android':
-        print('\n\nYou need Cython to compile Jniusx.\n\n')
+        print('\n\nYou need Cython to compile Pyjnius.\n\n')
         raise
     # On Android we expect to see 'c' files lying about.
     # and we go ahead with the 'desktop' file? Odd.
@@ -142,7 +142,7 @@ else:
                 join(jre_home, 'bin', 'server')]
 
 # generate the config.pxi
-with open(join(dirname(__file__), 'jniusx', 'config.pxi'), 'w') as fd:
+with open(join(dirname(__file__), 'jnius', 'config.pxi'), 'w') as fd:
     fd.write('DEF JNIUS_PLATFORM = {0!r}\n\n'.format(platform))
     if PY3:
         fd.write('DEF JNIUS_PYTHON3 = True\n\n')
@@ -151,26 +151,26 @@ with open(join(dirname(__file__), 'jniusx', 'config.pxi'), 'w') as fd:
     if lib_location is not None:
         fd.write('DEF JNIUS_LIB_SUFFIX = {0!r}\n\n'.format(lib_location))
 
-with open(join('jniusx', '__init__.py')) as fd:
+with open(join('jnius', '__init__.py')) as fd:
     versionline = [x for x in fd.readlines() if x.startswith('__version__')]
     version = versionline[0].split("'")[-2]
 
 # create the extension
 setup(name='jniusx',
-      version=version,
+      version='1.0.5',
       cmdclass={'build_ext': build_ext},
-      packages=['jniusx'],
-      py_modules=['jniusx_config'],
-      url='http://pyjniusx.readthedocs.org/',
+      packages=['jnius'],
+      py_modules=['jnius_config'],
+      url='http://pyjnius.readthedocs.org/',
       author='Mathieu Virbel and Gabriel Pettier',
       author_email='mat@kivy.org,gabriel@kivy.org',
       license='MIT',
       description='Python library to access Java classes',
       install_requires=install_requires,
-      ext_package='jniusx',
+      ext_package='jnius',
       ext_modules=[
           Extension(
-              'jniusx', [join('jniusx', x) for x in files],
+              'jnius', [join('jnius', x) for x in files],
               libraries=libraries,
               library_dirs=library_dirs,
               include_dirs=include_dirs,
@@ -181,7 +181,7 @@ setup(name='jniusx',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
-        'Operating System :: MacOS :: OS X',
+        'Operating System :: MacOS :: MacOS X',
         'Operating System :: Microsoft :: Windows',
         'Operating System :: POSIX :: Linux',
         'Programming Language :: Python :: 2.6',

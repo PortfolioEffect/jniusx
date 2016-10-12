@@ -1,2 +1,2 @@
 include *COPYING
-recursive-include jniusx *.pyx *.pxi
+recursive-include jnius *.pyx *.pxi

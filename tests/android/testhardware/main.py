@@ -1,5 +1,5 @@
 from time import sleep
-from jniusx import autoclass
+from jnius import autoclass
 
 print '-- test hardware start!'
 
@@ -12,4 +12,3 @@ for x in xrange(20):
     sleep(.1)
 
 print '-- test hardware done!'
- 

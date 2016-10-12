@@ -3,9 +3,9 @@
 API
 ===
 
-.. module:: jniusx
+.. module:: jnius
 
-This part of the documentation covers all the interfaces of Jniusx.
+This part of the documentation covers all the interfaces of Pyjnius.
 
 Reflection classes
 ------------------
@@ -21,7 +21,7 @@ Reflection classes
 
     So the minimum class definition would look like::
 
-        from jniusx import JavaClass, MetaJavaClass
+        from jnius import JavaClass, MetaJavaClass
 
         class Stack(JavaClass):
             __javaclass__ = 'java/util/Stack'
@@ -165,14 +165,14 @@ Reflection functions
     Return a :class:`JavaClass` that represent the class passed from `name`.
     The name must be written in the format: `a.b.c`, not `a/b/c`.
 
-    >>> from jniusx import autoclass
+    >>> from jnius import autoclass
     >>> autoclass('java.lang.System')
-    <class 'jniusx.java.lang.System'>
+    <class 'jnius.java.lang.System'>
 
     autoclass can also represent a nested Java class:
 
     >>> autoclass('android.provider.Settings$Secure')
-    <class 'jniusx.reflect.android.provider.Settings$Secure'>
+    <class 'jnius.reflect.android.provider.Settings$Secure'>
 
 Java class implementation in Python
 -----------------------------------
@@ -200,7 +200,7 @@ Java class implementation in Python
     For example, you could implement the `java/util/ListIterator` interface in
     Python like that::
 
-        from jniusx import PythonJavaClass, java_method
+        from jnius import PythonJavaClass, java_method
 
         class PythonListIterator(PythonJavaClass):
             __javainterfaces__ = ['java/util/ListIterator']
@@ -331,13 +331,13 @@ example::
 JVM options and the class path
 ------------------------------
 
-JVM options need to be set before `import jniusx` is called, as they cannot be changed after the VM starts up.
+JVM options need to be set before `import jnius` is called, as they cannot be changed after the VM starts up.
 To this end, you can::
 
-    import jniusx_config
-    jniusx_config.add_options('-Xrs', '-Xmx4096')
-    jniusx_config.set_classpath('.', '/usr/local/fem/plugins/*')
-    import jniusx
+    import jnius_config
+    jnius_config.add_options('-Xrs', '-Xmx4096')
+    jnius_config.set_classpath('.', '/usr/local/fem/plugins/*')
+    import jnius
 
 If a classpath is set with these functions, it overrides any CLASSPATH environment variable.
 Multiple options or path entries should be supplied as multiple arguments to the `add_` and `set_` functions.
@@ -345,26 +345,26 @@ If no classpath is provided and CLASSPATH is not set, the path defaults to `'.'`
 This functionality is not available on Android.
 
 
-Jniusx and threads
+Pyjnius and threads
 -------------------
 
 .. function:: detach()
 
-    Each time you create a native thread in Python and uses Jniusx, any call to
-    Jniusx methods will force attachment of the native thread to the current JVM.
-    But you must detach it before leaving the thread, and Jniusx cannot do it for
+    Each time you create a native thread in Python and uses Pyjnius, any call to
+    Pyjnius methods will force attachment of the native thread to the current JVM.
+    But you must detach it before leaving the thread, and Pyjnius cannot do it for
     you.
 
 Example::
 
     import threading
-    import jniusx
+    import jnius
 
     def run(...):
         try:
-            # use pyjniusx here
+            # use pyjnius here
         finally:
-            jniusx.detach()
+            jnius.detach()
 
 If you don't, it will crash on dalvik and ART / Android::
 

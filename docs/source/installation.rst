@@ -3,7 +3,7 @@
 Installation
 ============
 
-Jniusx depends on `Cython <http://cython.org/>`_ and `Java
+Pyjnius depends on `Cython <http://cython.org/>`_ and `Java
 <http://www.oracle.com/javase>`_.
 
 
@@ -29,7 +29,7 @@ Installation for Android
 ------------------------
 
 If you use `Python for android <http://github.com/kivy/python-for-android>`,
-you just need to compile a distribution with the pyjniusx module::
+you just need to compile a distribution with the pyjnius module::
 
-    ./distribute.sh -m 'pyjniusx kivy'
+    ./distribute.sh -m 'pyjnius kivy'
 

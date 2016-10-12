@@ -4,7 +4,7 @@ Android
 =======
 
 Android has a great and extensive API to control devices, your application
-etc. Some parts of the Android API are directly accessible with Jniusx but
+etc. Some parts of the Android API are directly accessible with Pyjnius but
 some of them require you to code in Java.
 
 
@@ -16,7 +16,7 @@ The `DisplayMetrics
 contains multiple fields that can return a lot of information about the device's
 screen::
 
-    from jniusx import autoclass
+    from jnius import autoclass
     DisplayMetrics = autoclass('android.util.DisplayMetrics')
     metrics = DisplayMetrics()
     print 'DPI', metrics.getDeviceDensity()
@@ -31,9 +31,9 @@ Recording an audio file
 By looking at the `Audio Capture
 <http://developer.android.com/guide/topics/media/audio-capture.html>`_ guide
 for Android, you can see the simple steps for recording an audio file.
-Let's do it with Jniusx::
+Let's do it with Pyjnius::
 
-    from jniusx import autoclass
+    from jnius import autoclass
     from time import sleep
 
     # get the needed Java classes
@@ -65,7 +65,7 @@ Playing an audio file
 Following the previous section on how to record an audio file, you can read it
 using the Android Media Player too::
 
-    from jniusx import autoclass
+    from jnius import autoclass
     from time import sleep
 
     # get the MediaPlayer java class
@@ -91,15 +91,15 @@ Accessing the Activity
 
 This example will show how to start a new Intent. Be careful: some Intents
 require you to setup parts in the `AndroidManifest.xml` and have some
-actions performed within your Activity. This is out of the scope of Jniusx but
+actions performed within your Activity. This is out of the scope of Pyjnius but
 we'll show you what the best approach is for playing with it.
 
 Using the Python-for-android project, you can access the default
 `PythonActivity`. Let's look at an example that demonstrates the
 `Intent.ACTION_VIEW`::
 
-    from jniusx import cast
-    from jniusx import autoclass
+    from jnius import cast
+    from jnius import autoclass
 
     # import the needed Java class
     PythonActivity = autoclass('org.renpy.android.PythonActivity')
@@ -125,7 +125,7 @@ Accelerometer access
 --------------------
 
 The accelerometer is a good example that shows how to write a little
-Java code that you can access later with Jniusx.
+Java code that you can access later with Pyjnius.
 
 The `SensorManager
 <http://developer.android.com/reference/android/hardware/SensorManager.html>`_
@@ -182,10 +182,10 @@ everything needed for accessing the accelerometer::
 
 So we created one method named `accelerometerEnable` to activate/deactivate the
 listener. And we saved the last event received in `Hardware.lastEvent`.
-Now you can use it in Jniusx::
+Now you can use it in Pyjnius::
 
     from time import sleep
-    from jniusx import autoclass
+    from jnius import autoclass
 
     Hardware = autoclass('org.myapp.Hardware')
 
@@ -220,9 +220,9 @@ Using TextToSpeech
 ------------------
 
 Same as the audio capture, by looking at the `An introduction to Text-To-Speech in Android
-<http://android-developers.blogspot.fr/2009/09/introduction-to-text-to-speech-in.html>`_ blog post, it's easy to do it with Jniusx::
+<http://android-developers.blogspot.fr/2009/09/introduction-to-text-to-speech-in.html>`_ blog post, it's easy to do it with Pyjnius::
 
-    from jniusx import autoclass
+    from jnius import autoclass
     Locale = autoclass('java.util.Locale')
     PythonActivity = autoclass('org.renpy.android.PythonActivity')
     TextToSpeech = autoclass('android.speech.tts.TextToSpeech')

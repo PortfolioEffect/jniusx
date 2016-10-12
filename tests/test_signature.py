@@ -1,8 +1,8 @@
 import unittest
 
-from jniusx import autoclass, java_method, PythonJavaClass, cast
+from jnius import autoclass, java_method, PythonJavaClass, cast
 
-from jniusx.signatures import *
+from jnius.signatures import *
 
 JObject = autoclass('java/lang/Object')
 JString = autoclass('java/lang/String')
@@ -101,7 +101,7 @@ class TestImplem(PythonJavaClass):
         return it
 
 
-from jniusx.reflect import autoclass
+from jnius.reflect import autoclass
 
 class SignaturesTest(unittest.TestCase):
 

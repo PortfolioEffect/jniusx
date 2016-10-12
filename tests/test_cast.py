@@ -2,8 +2,8 @@ from __future__ import print_function
 from __future__ import division
 from __future__ import absolute_import
 import unittest
-from jniusx.reflect import autoclass
-from jniusx import cast
+from jnius.reflect import autoclass
+from jnius import cast
 
 class MultipleSignatureTest(unittest.TestCase):
 
