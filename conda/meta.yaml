@@ -1,0 +1,27 @@
+package:
+  name: jniusx
+  version: 1.0.5
+	
+source:
+  fn: jniusx-1.0.5.tar.gz
+  url: https://pypi.python.org/packages/13/a1/4e570d0a37422643c870feba82ee95ccae4d6c3dd11b6418181de8b052b4/jniusx-1.0.5.tar.gz
+  md5: 4be07dcb01a6d7b3af1a3b7e4782a91e
+	
+build:
+  number: 1
+		
+requirements:
+  build:
+    - python
+    - cython
+    - wheel	
+    - six >=1.7.0
+    
+  run:
+    - python
+    - six >=1.7.0
+    
+about:
+  home: https://github.com/kivy/pyjnius
+  license: MIT
+  summary: A Python module to access Java classes as Python classes using JNI.
